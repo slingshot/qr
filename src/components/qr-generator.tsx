@@ -219,7 +219,7 @@ export function QRGenerator() {
                         <QrCode className="w-3.5 h-3.5" />
                         QR Generator
                     </div>
-                    <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
+                    <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground font-display">
                         Generate QR Codes
                     </h1>
                     <p className="text-muted-foreground mt-2 text-sm">
