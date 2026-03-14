@@ -223,16 +223,7 @@ export function QRGenerator() {
 
             <div className="w-full max-w-4xl">
                 {/* Header */}
-                <div
-                    className="text-center mb-8 animate-in-blur"
-                    style={
-                        {
-                            "--anim-duration": "0.7s",
-                            "--anim-delay": "0s",
-                            "--blur-amount": "12px",
-                        } as React.CSSProperties
-                    }
-                >
+                <div className="text-center mb-8">
                     <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4 border border-primary/20 backdrop-blur-sm">
                         <QrCode className="w-3.5 h-3.5" />
                         QR Generator
@@ -249,16 +240,7 @@ export function QRGenerator() {
                 <div className="glass-card rounded-2xl p-6 md:p-8">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         {/* Left: Controls */}
-                        <div
-                            className="space-y-6 animate-in-blur"
-                            style={
-                                {
-                                    "--anim-duration": "0.6s",
-                                    "--anim-delay": "0.25s",
-                                    "--blur-amount": "16px",
-                                } as React.CSSProperties
-                            }
-                        >
+                        <div className="space-y-6">
                             {/* Data Type Selector */}
                             <div className="space-y-2.5">
                                 <Label className="text-sm font-medium text-foreground/80">
@@ -514,16 +496,7 @@ export function QRGenerator() {
                         </div>
 
                         {/* Right: QR Preview & Export */}
-                        <div
-                            className="flex flex-col items-center gap-6 animate-in-blur"
-                            style={
-                                {
-                                    "--anim-duration": "0.6s",
-                                    "--anim-delay": "0.35s",
-                                    "--blur-amount": "16px",
-                                } as React.CSSProperties
-                            }
-                        >
+                        <div className="flex flex-col items-center gap-6">
                             {/* QR Preview */}
                             <div
                                 className={`
@@ -624,16 +597,7 @@ export function QRGenerator() {
                 </div>
 
                 {/* Footer */}
-                <p
-                    className="text-center text-xs text-muted-foreground/50 mt-6 animate-in-blur"
-                    style={
-                        {
-                            "--anim-duration": "0.6s",
-                            "--anim-delay": "0.5s",
-                            "--blur-amount": "12px",
-                        } as React.CSSProperties
-                    }
-                >
+                <p className="text-center text-xs text-muted-foreground/50 mt-6">
                     QR codes are generated client-side. No data is sent to any
                     server.
                 </p>
