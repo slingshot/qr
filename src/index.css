@@ -190,11 +190,11 @@
 
 .glass-button:hover {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
-    transform: translateY(-1px);
+    transform: scale(1.01);
 }
 
 .glass-button:active {
-    transform: translateY(0);
+    transform: scale(1);
 }
 
 /* Checkerboard pattern for transparent background preview */

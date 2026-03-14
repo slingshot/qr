@@ -85,6 +85,7 @@ function buildQRData(type: DataType, fields: Record<string, string>): string {
 
 const COLOR_PRESETS = [
     { name: "Black", value: "#000000" },
+    { name: "White", value: "#ffffff" },
     { name: "Navy", value: "#1e3a5f" },
     { name: "Indigo", value: "#4f46e5" },
     { name: "Purple", value: "#7c3aed" },
@@ -405,7 +406,9 @@ export function QRGenerator() {
                           ${
                               fgColor === preset.value
                                   ? "border-primary scale-110 shadow-md"
-                                  : "border-transparent hover:scale-105"
+                                  : preset.value === "#ffffff"
+                                    ? "border-border hover:scale-105"
+                                    : "border-transparent hover:scale-105"
                           }
                         `}
                                                 style={{
@@ -454,7 +457,14 @@ export function QRGenerator() {
                           ${
                               bgColor === preset.value
                                   ? "border-primary scale-110 shadow-md"
-                                  : "border-transparent hover:scale-105"
+                                  : [
+                                          "#ffffff",
+                                          "#f5f5f5",
+                                          "#e0e0e0",
+                                          "transparent",
+                                      ].includes(preset.value)
+                                    ? "border-border hover:scale-105"
+                                    : "border-transparent hover:scale-105"
                           }
                           ${preset.value === "transparent" ? "checkerboard" : ""}
                         `}
