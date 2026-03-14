@@ -94,6 +94,18 @@ const COLOR_PRESETS = [
     { name: "Slate", value: "#334155" },
 ];
 
+const BG_PRESETS = [
+    { name: "White", value: "#ffffff" },
+    { name: "Snow", value: "#f5f5f5" },
+    { name: "Silver", value: "#e0e0e0" },
+    { name: "Gray", value: "#bdbdbd" },
+    { name: "Dim", value: "#9e9e9e" },
+    { name: "Slate", value: "#757575" },
+    { name: "Charcoal", value: "#424242" },
+    { name: "Near Black", value: "#212121" },
+    { name: "Transparent", value: "transparent" },
+];
+
 export function QRGenerator() {
     useEffect(() => {
         document.title = title;
@@ -102,7 +114,7 @@ export function QRGenerator() {
     const [dataType, setDataType] = useState<DataType>("url");
     const [fields, setFields] = useState<Record<string, string>>({ value: "" });
     const [fgColor, setFgColor] = useState("#000000");
-    const [transparentBg, setTransparentBg] = useState(false);
+    const [bgColor, setBgColor] = useState("#ffffff");
     const [errorCorrection, setErrorCorrection] =
         useState<ErrorCorrectionLevel>("M");
     const [exportFormat, setExportFormat] = useState<ExportFormat>("png");
@@ -129,7 +141,8 @@ export function QRGenerator() {
                     margin: 2,
                     color: {
                         dark: fgColor,
-                        light: transparentBg ? "#00000000" : "#ffffff",
+                        light:
+                            bgColor === "transparent" ? "#00000000" : bgColor,
                     },
                     errorCorrectionLevel: errorCorrection,
                 });
@@ -142,7 +155,7 @@ export function QRGenerator() {
                 margin: 2,
                 color: {
                     dark: fgColor,
-                    light: transparentBg ? "#00000000" : "#ffffff",
+                    light: bgColor === "transparent" ? "#00000000" : bgColor,
                 },
                 errorCorrectionLevel: errorCorrection,
             });
@@ -152,7 +165,7 @@ export function QRGenerator() {
             setQrDataUrl("");
             setQrSvg("");
         }
-    }, [qrData, fgColor, transparentBg, errorCorrection]);
+    }, [qrData, fgColor, bgColor, errorCorrection]);
 
     useEffect(() => {
         generateQR();
@@ -171,7 +184,7 @@ export function QRGenerator() {
                 margin: 2,
                 color: {
                     dark: fgColor,
-                    light: transparentBg ? "#00000000" : "#ffffff",
+                    light: bgColor === "transparent" ? "#00000000" : bgColor,
                 },
                 errorCorrectionLevel: errorCorrection,
             }).then(() => {
@@ -423,39 +436,63 @@ export function QRGenerator() {
                                     </div>
                                 </div>
 
-                                {/* Background Toggle */}
-                                <div className="flex items-center justify-between">
-                                    <div>
-                                        <Label className="text-xs text-muted-foreground">
-                                            Background
-                                        </Label>
-                                        <p className="text-[11px] text-muted-foreground/60">
-                                            {transparentBg
-                                                ? "Transparent"
-                                                : "White"}
-                                        </p>
+                                {/* Background Color */}
+                                <div className="space-y-2">
+                                    <Label className="text-xs text-muted-foreground">
+                                        Background Color
+                                    </Label>
+                                    <div className="flex items-center gap-2 flex-wrap">
+                                        {BG_PRESETS.map((preset) => (
+                                            <button
+                                                type="button"
+                                                key={preset.value}
+                                                onClick={() =>
+                                                    setBgColor(preset.value)
+                                                }
+                                                className={`
+                          w-7 h-7 rounded-lg transition-all duration-200 border-2
+                          ${
+                              bgColor === preset.value
+                                  ? "border-primary scale-110 shadow-md"
+                                  : "border-transparent hover:scale-105"
+                          }
+                          ${preset.value === "transparent" ? "checkerboard" : ""}
+                        `}
+                                                style={
+                                                    preset.value !==
+                                                    "transparent"
+                                                        ? {
+                                                              backgroundColor:
+                                                                  preset.value,
+                                                          }
+                                                        : undefined
+                                                }
+                                                title={preset.name}
+                                            />
+                                        ))}
+                                        <div className="relative">
+                                            <input
+                                                type="color"
+                                                value={
+                                                    bgColor === "transparent"
+                                                        ? "#ffffff"
+                                                        : bgColor
+                                                }
+                                                onChange={(e) =>
+                                                    setBgColor(e.target.value)
+                                                }
+                                                className="absolute inset-0 w-7 h-7 opacity-0 cursor-pointer"
+                                            />
+                                            <div
+                                                className="w-7 h-7 rounded-lg border-2 border-dashed border-border flex items-center justify-center text-muted-foreground hover:border-primary/50 transition-colors"
+                                                title="Custom color"
+                                            >
+                                                <span className="text-[10px] font-bold">
+                                                    +
+                                                </span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <button
-                                        type="button"
-                                        onClick={() =>
-                                            setTransparentBg(!transparentBg)
-                                        }
-                                        className={`
-                      relative w-11 h-6 rounded-full transition-all duration-300
-                      ${
-                          transparentBg
-                              ? "bg-primary shadow-[0_0_8px_rgba(var(--primary),0.3)]"
-                              : "bg-border"
-                      }
-                    `}
-                                    >
-                                        <span
-                                            className={`
-                        absolute top-0.5 left-0.5 w-5 h-5 rounded-full bg-white shadow-sm transition-transform duration-300
-                        ${transparentBg ? "translate-x-5" : "translate-x-0"}
-                      `}
-                                        />
-                                    </button>
                                 </div>
 
                                 {/* Error Correction */}
@@ -501,9 +538,14 @@ export function QRGenerator() {
                             <div
                                 className={`
                   relative w-full max-w-[320px] aspect-square rounded-2xl flex items-center justify-center
-                  ${transparentBg ? "checkerboard" : "bg-white"}
+                  ${bgColor === "transparent" ? "checkerboard" : ""}
                   border border-border/40 shadow-inner
                 `}
+                                style={
+                                    bgColor !== "transparent"
+                                        ? { backgroundColor: bgColor }
+                                        : undefined
+                                }
                             >
                                 <canvas
                                     ref={canvasRef}
