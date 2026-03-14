@@ -219,3 +219,29 @@
         linear-gradient(45deg, transparent 75%, #2a2a2a 75%),
         linear-gradient(-45deg, transparent 75%, #2a2a2a 75%);
 }
+
+/* Load-in entrance animations (blur-to-clear fade) */
+@keyframes blur-fade-in {
+    from {
+        opacity: 0;
+        filter: blur(var(--blur-amount, 12px));
+    }
+    to {
+        opacity: 1;
+        filter: blur(0px);
+    }
+}
+
+.animate-in-blur {
+    opacity: 0;
+    animation: blur-fade-in var(--anim-duration, 0.7s)
+        cubic-bezier(0.25, 0.1, 0.25, 1) var(--anim-delay, 0s) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-in-blur {
+        opacity: 1;
+        animation: none;
+        filter: none;
+    }
+}
