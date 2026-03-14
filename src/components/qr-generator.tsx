@@ -86,13 +86,13 @@ function buildQRData(type: DataType, fields: Record<string, string>): string {
 const COLOR_PRESETS = [
     { name: "Black", value: "#000000" },
     { name: "White", value: "#ffffff" },
-    { name: "Navy", value: "#1e3a5f" },
-    { name: "Indigo", value: "#4f46e5" },
-    { name: "Purple", value: "#7c3aed" },
-    { name: "Rose", value: "#e11d48" },
-    { name: "Emerald", value: "#059669" },
-    { name: "Amber", value: "#d97706" },
     { name: "Slate", value: "#334155" },
+    { name: "Teal", value: "#1deecd" },
+    { name: "Red", value: "#fd4d2e" },
+    { name: "Amber", value: "#f4a60b" },
+    { name: "Green", value: "#08c94e" },
+    { name: "Blue", value: "#3760f5" },
+    { name: "Pink", value: "#fb46be" },
 ];
 
 const BG_PRESETS = [
