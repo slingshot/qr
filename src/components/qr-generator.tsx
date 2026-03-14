@@ -23,6 +23,11 @@ import {
     SelectValue,
 } from "@/components/ui/select";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { siteConfig } from "../../site.config";
+
+const title = import.meta.env.VITE_SITE_TITLE ?? siteConfig.title;
+const description =
+    import.meta.env.VITE_SITE_DESCRIPTION ?? siteConfig.description;
 
 type DataType = "text" | "url" | "email" | "phone" | "wifi";
 type ExportFormat = "png" | "svg";
@@ -90,6 +95,10 @@ const COLOR_PRESETS = [
 ];
 
 export function QRGenerator() {
+    useEffect(() => {
+        document.title = title;
+    }, []);
+
     const [dataType, setDataType] = useState<DataType>("url");
     const [fields, setFields] = useState<Record<string, string>>({ value: "" });
     const [fgColor, setFgColor] = useState("#000000");
@@ -220,11 +229,10 @@ export function QRGenerator() {
                         QR Generator
                     </div>
                     <h1 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground font-display">
-                        Generate QR Codes
+                        {title}
                     </h1>
                     <p className="text-muted-foreground mt-2 text-sm">
-                        Create beautiful QR codes for URLs, text, email, phone
-                        numbers, and Wi-Fi credentials.
+                        {description}
                     </p>
                 </div>
 
