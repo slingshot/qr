@@ -23,7 +23,7 @@
  *   keywords      → VITE_KEYWORDS
  */
 export const siteConfig = {
-    title: "Slingshot QR Code Generator",
+    title: "QR Code Generator",
     description:
         "Generate QR codes for URLs, text, email, phone numbers, and Wi-Fi credentials. Free, private, and open source.",
     url: "https://qr.slingshot.fm",
