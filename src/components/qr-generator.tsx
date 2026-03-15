@@ -758,7 +758,7 @@ export function QRGenerator() {
                     <div className="flex justify-between text-[10px] leading-[1.5] text-[#d1d1d1] font-medium">
                         <div className="flex gap-4">
                             <a
-                                href="https://slingshot.fm/terms"
+                                href="https://legal.slingshot.fm"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="hover:text-[#f8f8f8] transition-colors"
@@ -766,7 +766,7 @@ export function QRGenerator() {
                                 Terms
                             </a>
                             <a
-                                href="https://slingshot.fm/privacy"
+                                href="https://legal.slingshot.fm"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="hover:text-[#f8f8f8] transition-colors"
@@ -776,7 +776,7 @@ export function QRGenerator() {
                         </div>
                         <div className="flex gap-4">
                             <a
-                                href="https://slingshot.fm/help"
+                                href="mailto:help+qr@slingshot.fm"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="hover:text-[#f8f8f8] transition-colors"
@@ -784,7 +784,7 @@ export function QRGenerator() {
                                 Help
                             </a>
                             <a
-                                href="https://slingshot.fm/dmca"
+                                href="mailto:legal+dmca@slingshot.fm"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="hover:text-[#f8f8f8] transition-colors"
