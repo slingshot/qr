@@ -56,7 +56,7 @@ const DATA_TYPE_CONFIG: Record<
         placeholder: "+1 234 567 8900",
     },
     wifi: {
-        label: "Wi-Fi",
+        label: "WiFi",
         icon: <Wifi className="w-3.5 h-3.5" />,
         placeholder: "Network name",
     },
@@ -278,7 +278,7 @@ export function QRGenerator() {
 
             {/* Main */}
             <main className="flex-1 pt-24 pb-16 px-6">
-                <div className="max-w-[700px] mx-auto flex flex-col gap-10">
+                <div className="max-w-[780px] mx-auto flex flex-col gap-10">
                     {/* Hero */}
                     <div>
                         <h1 className="text-[20px] leading-tight font-semibold tracking-[-0.2px] text-[#f8f8f8] font-display">
