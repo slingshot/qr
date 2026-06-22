@@ -35,15 +35,15 @@ const DATA_TYPE_CONFIG: Record<
     DataType,
     { label: string; icon: React.ReactNode; placeholder: string }
 > = {
-    text: {
-        label: "Text",
-        icon: <Type className="w-3.5 h-3.5" />,
-        placeholder: "Enter any text...",
-    },
     url: {
         label: "URL",
         icon: <Link className="w-3.5 h-3.5" />,
         placeholder: "https://example.com",
+    },
+    text: {
+        label: "Text",
+        icon: <Type className="w-3.5 h-3.5" />,
+        placeholder: "Enter any text...",
     },
     email: {
         label: "Email",
